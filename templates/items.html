@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if 'username' in session %}
+	<div>
+		<a href="{{url_for('newItem')}}">Add item</a>
+	</div>
+	{% endif %}
+	</br>
+	<div class="starter-template">
+		{% for row in items %}
+			<a href="{{url_for('showItem', category_name = row.category.name, item_name = row.name ) }}">
+			{{row.name}}</a>
+			({{row.category.name}}) 
+			<p>{{row.description}}</p>
+		{% endfor %}
+	</div>
+{% endblock %}
+
